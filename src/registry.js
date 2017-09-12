@@ -14,6 +14,7 @@ import {
   Button,
   Image
 } from 'react-native';
+import {Actions} from "react-native-router-flux";
 
 import { CheckBox } from 'react-native-elements'
 
@@ -64,7 +65,7 @@ export default class ProjectTwo extends Component {
                 onPress={this.onPress.bind(this)}
               />
               <Button
-                onPress={this.onPress.bind(this)}
+                onPress={()=> Actions.mainView()}
                 title="Next"
                 color="#303c4a"
               />

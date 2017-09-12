@@ -5,8 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import {
-    AppRegistry,
+import {  
     StyleSheet,
     Text,
     View,
@@ -80,4 +79,4 @@ const styles = StyleSheet.create({
 
 });
 
-AppRegistry.registerComponent('ProjectTwo', () => ProjectTwo);
+
