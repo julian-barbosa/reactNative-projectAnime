@@ -18,34 +18,22 @@ import {
 import { CheckBox } from 'react-native-elements';
 
 import InformationList from './informationList';
+import {getListName} from  "./apiClient.js";
 
 export default class ProjectTwo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            checked: false
+            checked: false,
+            elements: []
         };
     }
-
-    fillArray() {
-        const informationList2 = Array(500);
-        for (let i = 0; i < 500; i++) {
-            const envio = {
-                image: 'https://2.gravatar.com/avatar/b5d5383385b2dd615bb34a7114d3f49f?s=256&d=identicon&r=G',
-                name: 'Julian' + i
-            }
-            informationList2.push(envio);
-        }
-        return informationList2;
+    
+    componentDidMount(){
+        getListName().then(data => this.setState({elements: data}));
     }
 
     render() {
-
-        const envio = {
-            image: 'https://2.gravatar.com/avatar/b5d5383385b2dd615bb34a7114d3f49f?s=256&d=identicon&r=G',
-            name: 'Julian'
-        }
-        const informationList2 = this.fillArray();
         return (
             <View style={styles.container} >
                 <View style={styles.titleView}>
@@ -53,7 +41,7 @@ export default class ProjectTwo extends Component {
                         TOP ANIMES
                     </Text>
                 </View>
-                <InformationList informationList={informationList2} />
+                <InformationList informationList={this.state.elements} />
             </View>
         );
     }
