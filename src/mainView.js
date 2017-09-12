@@ -17,7 +17,6 @@ import {
 
 import { CheckBox } from 'react-native-elements';
 
-import BoxAnime from './animeBox';
 import InformationList from './informationList';
 
 export default class ProjectTwo extends Component {
