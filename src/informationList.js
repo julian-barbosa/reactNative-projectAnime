@@ -5,29 +5,36 @@
  */
 
 import React, { Component } from 'react';
-import { 
+import {
     StyleSheet,
-    ListView    
+    ListView
 } from 'react-native';
 
 import BoxAnime from './animeBox';
 
-export default class InformationList extends Component { 
+export default class InformationList extends Component {
     constructor(props) {
         super(props);
-        const ds = new ListView.DataSource({rowHasChanged: (r1,r2)=>r1 != r2});
-        this.state ={
-            dataSource :ds.cloneWithRows(props.informationList)
+        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 });
+        this.state = {
+            dataSource: ds.cloneWithRows(props.informationList)
         };
     }
-    render() {        
 
-        return (           
-                <ListView 
+    componentWillReceiveProps(newProps){
+        if(newProps.informationList !== this.props.informationList){
+            this.state ={
+                dataSource: this.state.dataSource.cloneWithRows(newProps.informationList)
+            }
+        }
+    }
+
+    render() {
+        return (
+            <ListView
                 dataSource={this.state.dataSource}
-                renderRow = {(information)=><BoxAnime attr={information}/>}
-                />
+                renderRow={(information) => <BoxAnime attr={information} />}
+            />
         );
     }
 }
-
