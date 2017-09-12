@@ -1,0 +1,1 @@
+import Registry from './src/mainView.js';
